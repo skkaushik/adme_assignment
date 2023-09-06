@@ -26,7 +26,7 @@ const Pagination = () => {
     <div className="container">
       <div className="row">
       {images.map((image) => (
-             <div  className="col-4">
+             <div  className="col-md-4 col-sm-6 mb-5" >
              <div className="card " style={{width:" 18rem; "}}>
              <img
             key={image.id}
@@ -43,9 +43,11 @@ const Pagination = () => {
      
       {loading && <p>Loading...</p>}
       {!loading && (
-        <button className="btn btn-warning"onClick={handleLoadMore} disabled={loading}>
+       <div className='btn-div'>
+         <button className="btn btn-warning butn"onClick={handleLoadMore} disabled={loading}>
           Load More
         </button>
+       </div>
       )}
     </>
   );
