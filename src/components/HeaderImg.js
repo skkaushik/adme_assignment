@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const HeaderImg = () => {
-  return (
-    <div>HeaderImg</div>
-  )
-}
+  const [apiData, setApiData] = useState([]);
+  useEffect(() => {
+    handleApi();
+  }, []);
 
-export default HeaderImg
+  const handleApi = async () => {
+    const result = await axios.get("https://picsum.photos/v2/list");
+    console.log(result.data);
+    setApiData(result.data);
+  };
+  return (
+    <>
+      <section className="image-section">
+      {apiData && <img src={apiData[0].download_url}  alt="error in imgapi"/>}
+        {/* {apiData.map((item)=>{
+return <img src={item.download_url} alt="error in imgapi"/>
+        })} */}
+
+        
+      </section>
+    </>
+  );
+};
+
+export default HeaderImg;
