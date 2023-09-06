@@ -22,23 +22,32 @@ const Pagination = () => {
   };
 
   return (
-    <div>
-      <div className="image-container">
-        {images.map((image) => (
-          <img
+    <>
+    <div className="container">
+      <div className="row">
+      {images.map((image) => (
+             <div  className="col-4">
+             <div className="card " style={{width:" 18rem; "}}>
+             <img
             key={image.id}
             src={image.download_url}
             alt="error"
+            className='card-height'
           />
+             </div>
+           </div>
+          
         ))}
       </div>
+    </div>
+     
       {loading && <p>Loading...</p>}
       {!loading && (
         <button onClick={handleLoadMore} disabled={loading}>
           Load More
         </button>
       )}
-    </div>
+    </>
   );
 };
 
