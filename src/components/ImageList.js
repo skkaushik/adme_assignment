@@ -18,9 +18,9 @@ return (
     <div className="container">
       <div className="row">
         {apiData.map((item, index) => {
-          if(index>14&& index<26){
+          if(index>14&& index<27){
           return (
-            <div key={index} className="col-md-4 col-sm-6 mb-5">
+            <div key={index} className="col-md-4 col-sm-6 mb-3">
               <div className="card " style={{width:" 18rem; "}}>
                 <img src={item.download_url} className="card-img-top card-height" alt="..." />
               </div>

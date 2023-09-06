@@ -26,7 +26,7 @@ const Pagination = () => {
     <div className="container">
       <div className="row">
       {images.map((image) => (
-             <div  className="col-md-4 col-sm-6 mb-5" >
+             <div  className="col-md-4 col-sm-6 mb-3" >
              <div className="card " style={{width:" 18rem; "}}>
              <img
             key={image.id}
