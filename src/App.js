@@ -1,6 +1,7 @@
 
 import './App.css';
 import HeaderImg from './components/HeaderImg';
+import ImageList from './components/ImageList';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
      <Navbar/>
      <HeaderImg/>
+     <ImageList/>
      
     </div>
   );

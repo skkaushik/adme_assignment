@@ -15,10 +15,11 @@ const HeaderImg = () => {
   return (
     <>
       <section className="image-section">
-      {apiData && <img src={apiData[0].download_url}  alt="error in imgapi"/>}
-        {/* {apiData.map((item)=>{
-return <img src={item.download_url} alt="error in imgapi"/>
-        })} */}
+      {/* {apiData && <img src={apiData[3].download_url}  alt="error in imgapi"/>} */}
+        {apiData.map((item,index)=>{
+          if(index===0){
+return <img src={item.download_url} alt="error in imgapi" key={index}/>
+ } })}
 
         
       </section>
