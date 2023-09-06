@@ -43,7 +43,7 @@ const Pagination = () => {
      
       {loading && <p>Loading...</p>}
       {!loading && (
-        <button onClick={handleLoadMore} disabled={loading}>
+        <button className="btn btn-warning"onClick={handleLoadMore} disabled={loading}>
           Load More
         </button>
       )}
