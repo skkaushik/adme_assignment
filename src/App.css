@@ -38,7 +38,7 @@ img {
 }
 
 .card-height{
-  height: 200px;
+  height: 10rem;
 }
 
 @media (max-width: 768px) {
