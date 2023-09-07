@@ -2,28 +2,44 @@ import React, { useState, useEffect } from 'react';
 
 const Pagination = () => {
   const [images, setImages] = useState([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const fetchImages = async () => {
-    setLoading(true);
-    const response = await fetch(`https://picsum.photos/v2/list?page=${page}&limit=10`);
-    const data = await response.json();
-    setImages([...images, ...data]);
-    setLoading(false);
+  const loadImages = async (page) => {
+    try {
+      const response = await fetch(`https://picsum.photos/v2/list?page=${page}&limit=10`);
+      const data = await response.json();
+      setImages(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error fetching images:', error);
+    }
   };
 
   useEffect(() => {
-    fetchImages();
-  }, [page]); 
+    loadImages(currentPage);
+  }, [currentPage]);
 
-  const handleLoadMore = () => {
-    setPage(page + 1);
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
   };
 
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+
+    
   return (
-    <>
-    <div className="container">
+    <div>
+      
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+            <div className="container">
       <div className="row">
       {images.map((image) => (
              <div  className="col-md-4 col-sm-6 mb-3" >
@@ -40,17 +56,20 @@ const Pagination = () => {
         ))}
       </div>
     </div>
-     
-      {loading && <p>Loading...</p>}
-      {!loading && (
-       <div className='btn-div'>
-         <button className="btn btn-warning butn"onClick={handleLoadMore} disabled={loading}>
-          Load More
-        </button>
-       </div>
+          <div className="pagination">
+            <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+              Previous
+            </button>
+            <button onClick={handleNextPage}>Next</button>
+          </div>
+        </div>
       )}
-    </>
+    </div>
   );
 };
+
+
+    
+ 
 
 export default Pagination;
